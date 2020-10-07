@@ -4,6 +4,7 @@ import { EscolaridadesService } from '../../services/escolaridades.service';
 import { forkJoin } from 'rxjs';
 import { Escolaridades } from '../../models/escolaridad';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -17,6 +18,7 @@ export class RegistroComponent implements OnInit {
   constructor(
     private registroService: RegistroService,
     private escolaridadesService: EscolaridadesService,
+    private router: Router,
     private formBuilder: FormBuilder
     ) {
       this.formRegistro = this.formBuilder.group({
@@ -38,6 +40,7 @@ export class RegistroComponent implements OnInit {
   }
   registrarParticipante() {
     console.log(this.formRegistro.value);
+    this.router.navigateByUrl('/cuestionario');
   }
 
 }

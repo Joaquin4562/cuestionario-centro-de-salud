@@ -1,7 +1,7 @@
 <app-navbar2></app-navbar2>
 <div class="container d-flex">
     <div class="general">
-        <div class="row justify-content-between">
+        <form class="row justify-content-between" [formGroup]="formCuestionario">
             <div class="col-6">
                 <p class="preguntas"><strong>1.- Datos Clínicos.</strong> <br>
                     <label><input type="radio" value="1" name="pregs" checked> Fiebre, dolor de cabeza, dificultad para respirar</label><br>
@@ -73,6 +73,6 @@
 
                 </p>
             </div>
-        </div>
+        </form>
     </div>
 </div>
