@@ -23,7 +23,7 @@ export class RegistroComponent implements OnInit {
     ) {
       this.formRegistro = this.formBuilder.group({
         nombre:                ['', [Validators.required]],
-        correo:                ['', [Validators.required]],
+        correo:                ['', [Validators.required, Validators.email]],
         institucion:           ['', [Validators.required]],
         id_grados_estudios:    ['', [Validators.required]],
         funcion_que_desempena: ['', [Validators.required]],
@@ -40,7 +40,7 @@ export class RegistroComponent implements OnInit {
   }
   registrarParticipante() {
     console.log(this.formRegistro.value);
-    this.router.navigateByUrl('/cuestionario');
+    // this.router.navigateByUrl('/cuestionario');
   }
 
 }

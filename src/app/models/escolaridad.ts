@@ -1,4 +1,4 @@
 export interface Escolaridades {
-    id_escolaridades: string;
-    escolaridad: string;
+    id_grados_estudios: string;
+    grado_estudio: string;
 }
