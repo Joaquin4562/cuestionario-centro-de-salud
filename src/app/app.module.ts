@@ -9,11 +9,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppConfig } from './config/app.config';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { Navbar2Component } from './components/navbar2/navbar2.component';
 
 const ruta: Routes = [
   {
     path: 'registro',
     component: RegistroComponent
+  }, 
+  {
+    path: 'encuesta',
+    component: EncuestaComponent
   }
 ];
 
@@ -22,7 +28,9 @@ const ruta: Routes = [
   declarations: [
     AppComponent,
     RegistroComponent,
-    NavbarComponent
+    NavbarComponent,
+    EncuestaComponent,
+    Navbar2Component
   ],
   imports: [
     BrowserModule,
