@@ -5,6 +5,8 @@ import { forkJoin } from 'rxjs';
 import { Escolaridades } from '../../models/escolaridad';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-registro',
@@ -41,6 +43,23 @@ export class RegistroComponent implements OnInit {
   registrarParticipante() {
     console.log(this.formRegistro.value);
     // this.router.navigateByUrl('/cuestionario');
+    this.registroService.registrarParticipante(this.formRegistro.value).subscribe(
+      data => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registrado'
+        });
+        localStorage.setItem('info', JSON.stringify(this.formRegistro.value));
+        this.router.navigateByUrl('/cuestionario');
+      },
+      err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al registrar participante'
+        });
+        console.log(err);
+      }
+    );
   }
 
 }

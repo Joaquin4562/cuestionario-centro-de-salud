@@ -12,6 +12,7 @@ import { AppConfig } from './config/app.config';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { Navbar2Component } from './components/navbar2/navbar2.component';
 
+
 const ruta: Routes = [
   {
     path: 'registro',

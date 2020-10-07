@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { jsPDF } from 'jspdf';
+import { Routes, Router } from '@angular/router';
 
 @Component({
   selector: 'app-encuesta',
@@ -9,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class EncuestaComponent implements OnInit {
 
   formCuestionario: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     this.formCuestionario = this.formBuilder.group({
       respuesta1:  ['', [Validators.required]],
       respuesta2:  ['', [Validators.required]],
@@ -27,6 +29,7 @@ export class EncuestaComponent implements OnInit {
   ngOnInit(): void {
   }
   verificarPuntos() {
+    const doc = new jsPDF('p', 'in', 'letter');
     let puntos = 0;
     const valores = Object.values(this.formCuestionario.value);
     valores.forEach((value, _ ) => {
@@ -36,6 +39,12 @@ export class EncuestaComponent implements OnInit {
     });
     if (puntos >= 8) {
       console.log('PASASTE!');
+      doc.addImage('./assets/img/constancia.png', 'png', 0, 0, 8.5, 11);
+      doc.text(this.formCuestionario.value['nombre'], 50, 50);
+      doc.save('constancia.pdf');
+      this.router.navigateByUrl('/');
+      this.formCuestionario.reset();
+      localStorage.removeItem('info');
     } else {
       console.log('REPROBASTE!');
     }
