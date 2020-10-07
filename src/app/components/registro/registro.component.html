@@ -5,44 +5,47 @@
     </div>
     <div class="row justify-content-center"></div>
     <div class="col-5">
-        <div class="registro form-group">
+        <form class="registro" [formGroup]="formRegistro">
             <p class="titulo">REGISTRO</p>
-            <p>Nombre Completo</p>
-            <input type="text" name="" id="" class="form-control">
-            <p>Correo</p>
-            <input type="text" name="" id="" class="form-control">
-            <p>Institución</p>
-            <select class="form-control">
-                <option value="">SSA</option>
-                <option value="">IMSS</option>
-                <option value="">ISSSTE</option>
-                <option value="">Otra</option>
-            </select>
-
-            <p>Grado de estudios</p>
-            <select class="form-control">
-                <option value="">Primaria</option>
-                <option value="">Secundaria</option>
-                <option value="">Preparatoria</option>
-                <option value="">Licenciatura</option>
-                <option value="">Maestría</option>
-                <option value="">Doctorado</option>
-            </select>
-
-            <p>Función que desempeña en la institución</p>
-            <select class="form-control">
-                <option value="">Médico</option>
-                <option value="">Enfermero</option>
-                <option value="">Químico</option>
-                <option value="">Dentista</option>
-                <option value="">Trabajador Social</option>
-                <option value="">Administrativo</option>
-                <option value="">Promotor</option>
-                <option value="">Vector</option>
-                <option value="">Otro</option>
-            </select>
+            <div class="form-group">
+                <span>Nombre Completo:</span>
+                <input type="text" formControlName="nombre" class="form-control">
+            </div>
+            <div class="form-group">
+                <span>Correo:</span>
+                <input type="text" formControlName="correo" class="form-control">
+            </div>
+            <div class="form-group">
+                <span>Institución:</span>
+                <select class="form-control" formControlName="institucion">
+                    <option value="">SSA</option>
+                    <option value="">IMSS</option>
+                    <option value="">ISSSTE</option>
+                    <option value="">Otra</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span>Grado de estudios:</span>
+                <select class="form-control">
+                    <option value="">Primaria</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span>Función que desempeña en la institución:</span>
+                <select class="form-control">
+                    <option value="medico">Médico</option>
+                    <option value="enfermero">Enfermero</option>
+                    <option value="quimico">Químico</option>
+                    <option value="dentista">Dentista</option>
+                    <option value="trabajador social">Trabajador Social</option>
+                    <option value="administrativo">Administrativo</option>
+                    <option value="promotor">Promotor</option>
+                    <option value="vector">Vector</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
             <br>
             <button type="button" class="btn btn-primary" id="btn-registro">Registrarse</button>
-        </div>
+        </form>
     </div>
 </div>
