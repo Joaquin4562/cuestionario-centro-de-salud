@@ -17,6 +17,8 @@ export class RegistroComponent implements OnInit {
 
   escolaridades: Escolaridades[] = [];
   formRegistro: FormGroup;
+  isCollapse = true;
+  isCollapseFuncion = true;
   constructor(
     private registroService: RegistroService,
     private escolaridadesService: EscolaridadesService,
@@ -39,7 +41,22 @@ export class RegistroComponent implements OnInit {
       this.escolaridades = data.escolaridades;
     });
   }
+  onChangeInstitucion(value: string) {
+    if (value === 'Otra') {
+      this.isCollapse = !this.isCollapse;
+    } else {
+      this.isCollapse = true;
+    }
+  }
+  onChangeFuncion(value: string) {
+    if (value === 'otro') {
+      this.isCollapseFuncion = !this.isCollapseFuncion;
+    } else {
+      this.isCollapseFuncion = true;
+    }
+  }
   registrarParticipante() {
+    console.log(this.formRegistro);
     this.registroService.registrarParticipante(this.formRegistro.value).subscribe(
       data => {
         Swal.fire({

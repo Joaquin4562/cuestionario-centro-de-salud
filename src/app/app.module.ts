@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppConfig } from './config/app.config';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { Navbar2Component } from './components/navbar2/navbar2.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const ruta: Routes = [
@@ -39,7 +40,10 @@ const ruta: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(ruta)
+    RouterModule.forRoot(ruta,
+      { useHash: true }
+    ),
+    NgbModule
   ],
   providers: [
     AppConfig
