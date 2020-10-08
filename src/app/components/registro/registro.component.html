@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class=" imagen col-7 d-none d-lg-block">
+            <img src="assets/img/43071.jpg" alt="">
+        </div>
+        <div class="col-lg-5 col-md-12">
+            <form class="registro" [formGroup]="formRegistro">
+                <h1 class="titulo">REGISTRO</h1>
+                <div class="form-group">
+                    <label>Nombre Completo:</label>
+                    <input type="text" formControlName="nombre" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Correo:</label>
+                    <input type="text" formControlName="correo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Institución:</label>
+                    <select #s (change)="onChangeInstitucion(s.value)"  [attr.aria-expanded]="!isCollapse" aria-controls="collapseInstitucion" class="form-control" formControlName="institucion">
+                        <option value="SSA">SSA</option>
+                        <option value="IMSS">IMSS</option>
+                        <option value="ISSSTE">ISSSTE</option>
+                        <option value="Otra">Otra</option>
+                    </select>
+                </div>
+                <div class="form-group" id="collapseInstitucion" [ngbCollapse]="isCollapse">
+                    <input type="text" placeholder="Institución" formControlName="institucion" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Grado de estudios:</label>
+                    <select class="form-control" formControlName="id_grados_estudios">
+                        <option *ngFor="let escolaridad of escolaridades"
+                                value="{{escolaridad.id_grados_estudios}}">
+                                {{escolaridad.grado_estudio}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Función que desempeña en la institución:</label>
+                    <select #sd (change)="onChangeFuncion(sd.value)"  [attr.aria-expanded]="!isCollapseFuncion" aria-controls="collapseFuncion" class="form-control" formControlName="funcion_que_desempena">
+                        <option value="medico">Médico</option>
+                        <option value="enfermero">Enfermero</option>
+                        <option value="quimico">Químico</option>
+                        <option value="dentista">Dentista</option>
+                        <option value="trabajador social">Trabajador Social</option>
+                        <option value="administrativo">Administrativo</option>
+                        <option value="promotor">Promotor</option>
+                        <option value="vector">Vector</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group" id="collapseFuncion" [ngbCollapse]="isCollapseFuncion">
+                    <input type="text" placeholder="Función que desempeña" formControlName="funcion_que_desempena" class="form-control">
+                </div>
+                <br>
+                <button type="button" [disabled]="!formRegistro.valid" (click)="registrarParticipante()" class="btn btn-primary" id="btn-registro">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</div>
