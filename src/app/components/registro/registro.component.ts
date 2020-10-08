@@ -37,25 +37,23 @@ export class RegistroComponent implements OnInit {
       escolaridades: this.escolaridadesService.getEscolaridades()
     }).subscribe( data => {
       this.escolaridades = data.escolaridades;
-      console.log(data.escolaridades);
     });
   }
   registrarParticipante() {
-    console.log(this.formRegistro.value);
-    // this.router.navigateByUrl('/cuestionario');
     this.registroService.registrarParticipante(this.formRegistro.value).subscribe(
       data => {
         Swal.fire({
           icon: 'success',
           title: 'Registrado'
         });
-        localStorage.setItem('info', JSON.stringify(this.formRegistro.value));
+        localStorage.setItem('info', JSON.stringify(data));
         this.router.navigateByUrl('/cuestionario');
       },
       err => {
         Swal.fire({
           icon: 'error',
-          title: 'Error al registrar participante'
+          title: 'Error al registrar participante',
+          text: 'Correo ya registrado'
         });
         console.log(err);
       }

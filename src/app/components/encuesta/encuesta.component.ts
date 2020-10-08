@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { jsPDF } from 'jspdf';
 import { Routes, Router } from '@angular/router';
+import { EncuestaService } from '../../services/encuesta.service';
+import { LocalData } from '../../models/localData';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-encuesta',
@@ -11,7 +14,13 @@ import { Routes, Router } from '@angular/router';
 export class EncuestaComponent implements OnInit {
 
   formCuestionario: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  localData: LocalData;
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private encuestaService: EncuestaService
+    ) {
+    this.localData = JSON.parse(localStorage.getItem('info'));
     this.formCuestionario = this.formBuilder.group({
       respuesta1:  ['', [Validators.required]],
       respuesta2:  ['', [Validators.required]],
@@ -29,7 +38,6 @@ export class EncuestaComponent implements OnInit {
   ngOnInit(): void {
   }
   verificarPuntos() {
-    const doc = new jsPDF('p', 'in', 'letter');
     let puntos = 0;
     const valores = Object.values(this.formCuestionario.value);
     valores.forEach((value, _ ) => {
@@ -37,16 +45,21 @@ export class EncuestaComponent implements OnInit {
         puntos++;
       }
     });
-    if (puntos >= 8) {
-      console.log('PASASTE!');
-      doc.addImage('./assets/img/constancia.png', 'png', 0, 0, 8.5, 11);
-      doc.text(this.formCuestionario.value['nombre'], 50, 50);
-      doc.save('constancia.pdf');
-      this.router.navigateByUrl('/');
-      this.formCuestionario.reset();
-      localStorage.removeItem('info');
-    } else {
-      console.log('REPROBASTE!');
-    }
+    this.encuestaService.enviarConstancia(this.localData.nombre, puntos, this.localData.correo, this.localData.id_participantes)
+      .subscribe( _ => {
+        Swal.fire({
+          title: 'Cuestionario Finalizado',
+          text: 'Favor de revisar tu correo electronico',
+          icon: 'success'
+        });
+        localStorage.removeItem('info');
+        this.router.navigateByUrl('/');
+      }, err => {
+        Swal.fire({
+          title: 'Ocurrio un error',
+          icon: 'error'
+        });
+        console.log(err);
+      });
   }
 }
