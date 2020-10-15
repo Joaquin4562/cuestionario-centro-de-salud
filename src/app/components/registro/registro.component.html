@@ -7,6 +7,7 @@
         <div class="col-lg-5 col-md-12">
             <form class="registro" [formGroup]="formRegistro">
                 <h1 class="titulo">REGISTRO</h1>
+
                 <div class="form-group">
                     <label>Nombre Completo:</label>
                     <input type="text" formControlName="nombre" class="form-control">
@@ -17,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     <label>Institución:</label>
-                    <select #s (change)="onChangeInstitucion(s.value)"  [attr.aria-expanded]="!isCollapse" aria-controls="collapseInstitucion" class="form-control" formControlName="institucion">
+                    <select #s (change)="onChangeInstitucion(s.value)" [attr.aria-expanded]="!isCollapse" aria-controls="collapseInstitucion" class="form-control" formControlName="institucion">
                         <option value="SSA">SSA</option>
                         <option value="IMSS">IMSS</option>
                         <option value="ISSSTE">ISSSTE</option>
@@ -38,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label>Función que desempeña en la institución:</label>
-                    <select #sd (change)="onChangeFuncion(sd.value)"  [attr.aria-expanded]="!isCollapseFuncion" aria-controls="collapseFuncion" class="form-control" formControlName="funcion_que_desempena">
+                    <select #sd (change)="onChangeFuncion(sd.value)" [attr.aria-expanded]="!isCollapseFuncion" aria-controls="collapseFuncion" class="form-control" formControlName="funcion_que_desempena">
                         <option value="medico">Médico</option>
                         <option value="enfermero">Enfermero</option>
                         <option value="quimico">Químico</option>

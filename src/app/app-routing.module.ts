@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegistroComponent } from './components/registro/registro.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
   {
-    path: '', component: RegistroComponent
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: 'registro', component: RegistroComponent
   },
   {
     path: 'cuestionario', component: EncuestaComponent
