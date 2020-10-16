@@ -33,7 +33,6 @@
     background-color: #224D32;
     border: none;
     width: 300px;
-    margin-left: 10px;
 }
 
 #btn-registro:hover {
@@ -48,6 +47,10 @@ select {
 input[text] {
     width: 320px;
     height: 35px;
+}
+
+.input-form {
+    background-color: #d9e2f3;
 }
 
 img {
@@ -89,8 +92,6 @@ img {
 .imagen {
     width: 230px;
     height: 58px;
-    margin-top: 40px;
-    justify-content: center;
 }
 
 h2 {

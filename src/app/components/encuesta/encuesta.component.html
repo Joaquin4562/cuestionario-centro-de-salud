@@ -1,8 +1,8 @@
 <app-navbar2></app-navbar2>
-<div class="container d-flex">
+<div class="container d-flex mt-4">
     <div class="general">
         <form class="row justify-content-between" [formGroup]="formCuestionario">
-            <div class="col-6">
+            <div class="col-md-6 col-12">
                 <p class="preguntas"><strong>1.- Datos Clínicos.</strong> <br>
                     <label><input type="radio" value="2" formControlName="respuesta1"> Fiebre, dolor de cabeza, dificultad para respirar</label><br>
                     <label><input type="radio" value="3" formControlName="respuesta1"> Fiebre, dolor de cabeza, fatiga, dolor de garganta, dolor ocular</label><br>
@@ -38,7 +38,7 @@
                     <label><input type="radio" value="3" formControlName="respuesta9"> 35 km/h</label><br>
                 </p>
             </div>
-            <div class="col-6">
+            <div class="col-md-6 col-12">
                 <p class="preguntas"> <strong>2.- Tiempo que dura la fase de febril de dengue.</strong> <br>
                     <label><input type="radio" value="2" formControlName="respuesta2"> 1 a 2 días</label><br>
                     <label><input type="radio" value="1" formControlName="respuesta2"> 5 a 7 días</label><br>
@@ -72,10 +72,10 @@
                     <label><input type="radio" value="1" formControlName="respuesta10"> Falso</label><br>
                 </p>
             </div>
-        </form>´
+        </form>
     </div>
 
 </div>
-<div class="row justify-content-center">
+<div class="mb-5 text-center">
     <button (click)="verificarPuntos()" class="boton btn btn-primary" [disabled]="!formCuestionario.valid">Enviar</button>
 </div>
