@@ -12,18 +12,18 @@ import { AppConfig } from './config/app.config';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { Navbar2Component } from './components/navbar2/navbar2.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const ruta: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  }, 
+  },
   {
     path: 'registro',
     component: RegistroComponent
-  }, 
+  },
   {
     path: 'encuesta',
     component: EncuestaComponent

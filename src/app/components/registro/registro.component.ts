@@ -63,7 +63,7 @@ export class RegistroComponent implements OnInit {
           icon: 'success',
           title: 'Registrado'
         });
-        localStorage.setItem('info', JSON.stringify(data));
+        localStorage.setItem('info-registro', JSON.stringify(data));
         this.router.navigateByUrl('/cuestionario');
       },
       err => {

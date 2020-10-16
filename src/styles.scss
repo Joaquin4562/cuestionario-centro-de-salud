@@ -45,7 +45,7 @@ select {
     height: 35px;
 }
 
-input {
+input[text] {
     width: 320px;
     height: 35px;
 }
@@ -126,7 +126,7 @@ strong {
     font-family: Poppins;
     color: #224D32;
     align-items: center;
-    margin-left: 45%;
+    margin-left: 50%;
     font-size: 20px;
     margin-top: 7px;
 }

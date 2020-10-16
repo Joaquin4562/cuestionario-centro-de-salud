@@ -20,7 +20,7 @@ export class EncuestaComponent implements OnInit {
     private router: Router,
     private encuestaService: EncuestaService
     ) {
-    this.localData = JSON.parse(localStorage.getItem('info'));
+    this.localData = JSON.parse(localStorage.getItem('info-registro'));
     this.formCuestionario = this.formBuilder.group({
       respuesta1:  ['', [Validators.required]],
       respuesta2:  ['', [Validators.required]],
@@ -52,7 +52,7 @@ export class EncuestaComponent implements OnInit {
           text: 'Favor de revisar tu correo electronico',
           icon: 'success'
         });
-        localStorage.removeItem('info');
+        localStorage.removeItem('info-registro');
         this.router.navigateByUrl('/');
       }, err => {
         Swal.fire({

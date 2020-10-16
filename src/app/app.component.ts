@@ -10,8 +10,8 @@ export class AppComponent implements OnInit {
   title = 'cuestionario-salud';
   constructor(private router: Router) { }
     ngOnInit(): void {
-      if (!localStorage.getItem('info')) {
-        this.router.navigateByUrl('/');
+      if (!localStorage.getItem('info-registro') || !localStorage.getItem('info-login')) {
+        this.router.navigateByUrl('/login');
       } else {
         this.router.navigateByUrl('cuestionario');
       }

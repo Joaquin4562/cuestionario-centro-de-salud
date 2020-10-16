@@ -1,32 +1,29 @@
 <app-navbar></app-navbar>
 <div class="container">
     <div class="row">
-
-
         <div class=" imagen col-7 d-none d-lg-block">
             <img src="assets/img/43071.jpg" alt="">
         </div>
         <div class="col-lg-5 col-md-12">
-            <div class="inicio">
-                <form class="login" [formGroup]="">
+            <div class="inicio row">
+                <form class="login" [formGroup]="formSignIn">
                     <h1 class="titulo">INICIO DE SESIÓN</h1>
                     <h3 class="titulo2">Solo para el administrador</h3>
                     <div class="info">
                         <div class="form-group">
-                            <label for="">Correo</label>
-                            <input type="text" name="" id="" formControlName="nombre" class="form-control">
+                            <label for="">Usuario:</label>
+                            <input type="text" name="" id="" formControlName="usuario" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="">Contraseña</label>
+                            <label for="">Contraseña:</label>
                             <input type="text" name="" id="" formControlName="contrasena" class="form-control">
                         </div>
                     </div>
-                    <br>
-                    <button type="button" class="btn btn-primary" id="btn-registro"> INICIAR SESION </button>
-                    <br>
-                    <label for="" class="o"> Ó </label>
-                    <br>
-                    <button type="button" class="btn btn-primary" id="btn-registro"> CONTESTAR ENCUESTA </button>
+                        <button type="button" (click)="signInUser()" [disabled]="!formSignIn.valid" class="btn btn-primary" id="btn-registro"> INICIAR SESIÓN </button>
+                        <div>
+                            <label for="" class="o"> Ó </label>
+                        </div>
+                    <button type="button" (click)="toRegistro()" class="btn btn-primary" id="btn-registro"> CONTESTAR CUESTIONARIO </button>
                 </form>
             </div>
         </div>
