@@ -1,45 +1,47 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container-fluid mt-5">
     <div class="row">
-        <div class=" imagen col-7 d-none d-lg-block">
-            <img src="assets/img/43071.jpg" alt="">
+        <div class="imagen col-7 d-none d-lg-block">
+            <img src="assets/img/43071.jpg" alt="" />
         </div>
         <div class="col-lg-5 col-md-12">
-            <form class="registro" [formGroup]="formRegistro">
-                <h1 class="titulo">REGISTRO</h1>
-
-                <div class="form-group">
+            <form class="row justify-content-center" [formGroup]="formRegistro">
+                <div class="col-12">
+                    <h1 class="titulo">REGISTRO</h1>
+                </div>
+                <div class="form-group col-10">
                     <label>Nombre Completo:</label>
-                    <input type="text" formControlName="nombre" class="form-control">
+                    <input type="text" formControlName="nombre" class="form-control input-form" />
                 </div>
-                <div class="form-group">
+                <div class="form-group col-10">
                     <label>Correo:</label>
-                    <input type="text" formControlName="correo" class="form-control">
+                    <input type="text" formControlName="correo" class="form-control input-form" />
                 </div>
-                <div class="form-group">
+                <div class="form-group col-10">
                     <label>Institución:</label>
-                    <select #s (change)="onChangeInstitucion(s.value)" [attr.aria-expanded]="!isCollapse" aria-controls="collapseInstitucion" class="form-control" formControlName="institucion">
+                    <select #s (change)="onChangeInstitucion(s.value)" [attr.aria-expanded]="!isCollapse" aria-controls="collapseInstitucion" class="form-control input-form" formControlName="institucion">
                         <option value="SSA">SSA</option>
                         <option value="IMSS">IMSS</option>
                         <option value="ISSSTE">ISSSTE</option>
                         <option value="Otra">Otra</option>
                     </select>
                 </div>
-                <div class="form-group" id="collapseInstitucion" [ngbCollapse]="isCollapse">
-                    <input type="text" placeholder="Institución" formControlName="institucion" class="form-control">
+                <div class="form-group col-10" id="collapseInstitucion" [ngbCollapse]="isCollapse">
+                    <input type="text" placeholder="Institución" formControlName="institucion" class="form-control input-form" />
                 </div>
-                <div class="form-group">
+                <div class="form-group col-10">
                     <label>Grado de estudios:</label>
-                    <select class="form-control" formControlName="id_grados_estudios">
-                        <option *ngFor="let escolaridad of escolaridades"
-                                value="{{escolaridad.id_grados_estudios}}">
-                                {{escolaridad.grado_estudio}}
+                    <select class="form-control input-form" formControlName="id_grados_estudios">
+                        <option
+                            *ngFor="let escolaridad of escolaridades"
+                            value="{{ escolaridad.id_grados_estudios }}">
+                            {{ escolaridad.grado_estudio }}
                         </option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-10">
                     <label>Función que desempeña en la institución:</label>
-                    <select #sd (change)="onChangeFuncion(sd.value)" [attr.aria-expanded]="!isCollapseFuncion" aria-controls="collapseFuncion" class="form-control" formControlName="funcion_que_desempena">
+                    <select #sd (change)="onChangeFuncion(sd.value)" [attr.aria-expanded]="!isCollapseFuncion" aria-controls="collapseFuncion" class="form-control input-form" formControlName="funcion_que_desempena">
                         <option value="medico">Médico</option>
                         <option value="enfermero">Enfermero</option>
                         <option value="quimico">Químico</option>
@@ -51,11 +53,15 @@
                         <option value="otro">Otro</option>
                     </select>
                 </div>
-                <div class="form-group" id="collapseFuncion" [ngbCollapse]="isCollapseFuncion">
-                    <input type="text" placeholder="Función que desempeña" formControlName="funcion_que_desempena" class="form-control">
+                <div class="form-group col-10" id="collapseFuncion" [ngbCollapse]="isCollapseFuncion">
+                    <input type="text" placeholder="Función que desempeña" formControlName="funcion_que_desempena" class="form-control input-form" />
                 </div>
-                <br>
-                <button type="button" [disabled]="!formRegistro.valid" (click)="registrarParticipante()" class="btn btn-primary" id="btn-registro">Registrarse</button>
+                <br />
+                <div class="col-12 text-center">
+                    <button type="button" [disabled]="!formRegistro.valid" (click)="registrarParticipante()" class="btn btn-primary" id="btn-registro">
+                        Registrarse
+                    </button>
+                </div>
             </form>
         </div>
     </div>
