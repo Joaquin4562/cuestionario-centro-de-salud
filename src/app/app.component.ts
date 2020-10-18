@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UtilService } from './services/util.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'cuestionario-salud';
-  constructor(private router: Router) { }
+  constructor(private router: Router, public utilService: UtilService) { }
     ngOnInit(): void {
       if (!localStorage.getItem('info-registro')) {
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/estadisticas');
       } else {
         this.router.navigateByUrl('cuestionario');
       }

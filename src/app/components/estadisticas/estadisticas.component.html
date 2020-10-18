@@ -1,0 +1,110 @@
+<app-navbar></app-navbar>
+<div class="container-fluid p-5">
+    <!--Estadisticas Generales-->
+    <div class="row">
+        <div class="col-12 text-center mb-3">
+            <h1>ESTADISTICAS GENERALES</h1>
+        </div>
+        <div class="col-6">
+            <canvas baseChart
+                [datasets]="barChartDataGeneral"
+                [labels]="barChartLabelsGeneral"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [legend]="barChartLegend"
+                [colors]="barChartColors"
+                [chartType]="barChartType">
+            </canvas>
+        </div>
+        <div class="col-6">
+            <div class="row p-4 justify-content-center">
+                <div class="col-12 mb-3 pl-5 pr-5">
+                    <button class="btn btn-primary" (click)="descargarGenerales()">Descargar</button>
+                </div>
+                <div class="col-5 aprovados">
+                    <div class="row card-estadisticas">
+                        <div class="col-12">
+                            <h3>Aprovados</h3>
+                        </div>
+                        <div class="col-4">
+                            <h2>{{aprovadosGralTotal}}</h2>
+                        </div>
+                        <div class="col-8">
+                            <img src="../../../assets/img/ok.png" class="icono float-right" alt="icono">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 reprovados ml-2">
+                    <div class="row card-estadisticas">
+                        <div class="col-12">
+                            <h3>Reprovados</h3>
+                        </div>
+                        <div class="col-6">
+                            <h2>{{reprovadosGralTotal}}</h2>
+                        </div>
+                        <div class="col-6">
+                            <img src="../../../assets/img/cancel.png" class="icono float-right" alt="icono">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Estadisticas por institución-->
+    <div class="row mt-5">
+        <div class="col-12 text-center mb-3">
+            <h1>ESTADISTICAS POR INSTITUCIÓN</h1>
+        </div>
+        <div class="col-6">
+            <canvas baseChart
+                [datasets]="barChartDataInstitucion"
+                [labels]="barChartLabelsInstitucion"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [colors]="barChartColors"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+            </canvas>
+        </div>
+        <div class="col-6">
+            <div class="row p-4 justify-content-center">
+                <div class="col-12 mb-3 pl-5 pr-5">
+                    <button class="btn btn-primary" (click)="descargarInstitucion()">Descargar</button>
+                </div>
+                <div class="col-12 mb-3 pl-5 pr-5">
+                    <select #s (change)="onChangeInstitucion(s.value)" class="btn btn-primary" aria-placeholder="Institución">
+                        <option value="{{institucion}}" *ngFor="let institucion of instituciones">
+                        {{institucion}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-5 aprovados">
+                    <div class="row card-estadisticas">
+                        <div class="col-12">
+                            <h3>Aprovados</h3>
+                        </div>
+                        <div class="col-4">
+                            <h2>{{aprovadosInstitucion}}</h2>
+                        </div>
+                        <div class="col-8">
+                            <img src="../../../assets/img/ok.png" class="icono float-right" alt="icono">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 reprovados ml-2">
+                    <div class="row card-estadisticas">
+                        <div class="col-12">
+                            <h3>Reprovados</h3>
+                        </div>
+                        <div class="col-6">
+                            <h2>{{reprovadosInstitucion}}</h2>
+                        </div>
+                        <div class="col-6">
+                            <img src="../../../assets/img/cancel.png" class="icono float-right" alt="icono">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
