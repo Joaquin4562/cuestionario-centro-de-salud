@@ -35,10 +35,10 @@ export class EstadisticasComponent implements OnInit {
   ];
   barChartLabelsGeneral: Label[];
   barChartDataGeneral: ChartDataSets[] =  [
-    { data: [0, 0, 0], label: 'Aprovados' },
-    { data: [0, 0, 0], label: 'Reprovados' }
+    { data: [0, 0, 0], label: 'Aprobados' },
+    { data: [0, 0, 0], label: 'Reprobados' }
   ];
-  barChartLabelsInstitucion: Label[] = ['Aprovados', 'Reprovados'];
+  barChartLabelsInstitucion: Label[] = ['Aprobados', 'Reprobados'];
   barChartDataInstitucion: ChartDataSets[] = [
     { data: [0, 0, 0], label: 'Total' }
   ];
@@ -65,8 +65,8 @@ export class EstadisticasComponent implements OnInit {
       this.participantesInstitucion = data.participanteInstitucion;
       this.barChartLabelsGeneral = this.instituciones;
       this.barChartDataGeneral =  [
-        { data: data.aprovadosgral, label: 'Aprovados' },
-        { data: data.reprovadosGral, label: 'Reprovados' }
+        { data: data.aprovadosgral, label: 'Aprobados' },
+        { data: data.reprovadosGral, label: 'Reprobados' }
       ];
       data.aprovadosgral.forEach((element: number) => {
         this.aprovadosGralTotal += element;
