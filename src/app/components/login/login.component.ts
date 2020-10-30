@@ -35,7 +35,9 @@ export class LoginComponent implements OnInit {
             icon: 'error'
           });
         } else {
-          console.log(data);
+          localStorage.setItem('info-login', JSON.stringify(data));
+          this.router.navigateByUrl('/estadisticas');
+
         }
       }, err => console.log(err));
   }

@@ -7,6 +7,7 @@ import { forkJoin } from 'rxjs';
 import { Participantes } from '../../models/participantes';
 import { ExportToCsv } from 'export-to-csv';
 import { UtilService } from '../../services/util.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-estadisticas',
@@ -44,6 +45,7 @@ export class EstadisticasComponent implements OnInit {
   ];
 
   constructor(
+    private router: Router,
     private estadisticasService: EstadisticasService,
     private participantesServices: ParticipantesService,
     private utilService: UtilService,
@@ -132,4 +134,9 @@ export class EstadisticasComponent implements OnInit {
     const csvExporter = new ExportToCsv(options);
     csvExporter.generateCsv(this.participantesInstitucion);
   }
+cerrarSesion() {
+  localStorage.removeItem('info-login');
+  this.router.navigateByUrl('/login');
+}
+
 }

@@ -64,7 +64,7 @@ export class RegistroComponent implements OnInit {
           title: 'Registrado'
         });
         localStorage.setItem('info-registro', JSON.stringify(data));
-        this.router.navigateByUrl('/cuestionario');
+        this.router.navigateByUrl('/encuesta');
       },
       err => {
         Swal.fire({
