@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { UtilService } from '../../services/util.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private formBuilder: FormBuilder,
+    private utilService:UtilService
     ) {
       this.formSignIn = this.formBuilder.group({
         usuario: ['', [Validators.required]],
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   signInUser() {
+    this.utilService._loading = true;
     this.loginService.signIn(this.formSignIn.value)
       .subscribe( data => {
         if ( !data.auth ) {
@@ -35,9 +38,10 @@ export class LoginComponent implements OnInit {
             icon: 'error'
           });
         } else {
-          console.log(data);
+          localStorage.setItem('info-login', JSON.stringify(data));
+          this.router.navigateByUrl('/estadisticas');
         }
-      }, err => console.log(err));
+      }, err => console.log(err)).add(() => this.utilService._loading = false);
   }
   toRegistro() {
     this.router.navigateByUrl('/registro');
