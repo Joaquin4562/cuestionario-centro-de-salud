@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   registro = false;
   constructor(private router: Router, public utilService: UtilService) { }
     ngOnInit(): void {
-      /*if (localStorage.getItem('info-registro')) {
+      if (localStorage.getItem('info-registro')) {
         this.registro = true;
       }
       if (localStorage.getItem('info-login')) {
@@ -28,8 +28,7 @@ export class AppComponent implements OnInit {
         this.login = false;
         this.registro = false;
         this.router.navigateByUrl('/login');
-      }*/
-      this.router.navigateByUrl('/encuesta')
+      }
     }
 
 }
