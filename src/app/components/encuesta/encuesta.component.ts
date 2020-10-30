@@ -53,7 +53,7 @@ export class EncuestaComponent implements OnInit {
           icon: 'success'
         });
         localStorage.removeItem('info-registro');
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/login');
       }, err => {
         Swal.fire({
           title: 'Ocurrio un error',

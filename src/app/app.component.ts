@@ -9,12 +9,26 @@ import { UtilService } from './services/util.service';
 })
 export class AppComponent implements OnInit {
   title = 'cuestionario-salud';
+  login = false;
+  registro = false;
   constructor(private router: Router, public utilService: UtilService) { }
-  ngOnInit(): void {
-    if (!localStorage.getItem('info-login')) {
-      this.router.navigateByUrl('/login');
-    } else {
-      this.router.navigateByUrl('/estadisticas');
+    ngOnInit(): void {
+      if (localStorage.getItem('info-registro')) {
+        this.registro = true;
+      }
+      if (localStorage.getItem('info-login')) {
+        this.login = true;
+      }
+      if (this.login && !this.registro) {
+        this.router.navigateByUrl('/estadisticas');
+      } else if (!this.login && this.registro) {
+        this.router.navigateByUrl('/encuesta');
+      }
+      if (!this.login && !this.registro) {
+        this.login = false;
+        this.registro = false;
+        this.router.navigateByUrl('/login');
+      }
     }
 
     if (!localStorage.getItem('info-registro')) {
