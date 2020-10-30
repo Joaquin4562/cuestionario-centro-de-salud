@@ -31,11 +31,5 @@ export class AppComponent implements OnInit {
       }
     }
 
-    if (!localStorage.getItem('info-registro')) {
-      this.router.navigateByUrl('/login');
-    } else {
-      this.router.navigateByUrl('/encuesta');
-    }
-  }
 }
 
